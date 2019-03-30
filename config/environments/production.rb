@@ -1,4 +1,6 @@
-Rails.application.configure do
+# frozen_string_literal: true
+
+Rails.application.configure do # rubocop:disable Metrics/BlockLength
   # Verifies that versions and hashed value of the package contents in the project's package.json
   # config.webpacker.check_yarn_integrity = false
   # Settings specified here will take precedence over those in config/application.rb.
@@ -33,7 +35,7 @@ Rails.application.configure do
 
   config.filter_parameters << :password
 
-  # `config.assets.precompile` and `config.assets.version` have moved to config/initializers/assets.rb
+  # `config.assets.precompile` and `config.assets.version` moved to config/initializers/assets.rb
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server.
   # config.action_controller.asset_host = 'http://assets.example.com'
@@ -58,19 +60,18 @@ Rails.application.configure do
   config.log_level = :debug
 
   # Prepend all log lines with the following tags.
-  config.log_tags = [ :request_id ]
+  config.log_tags = [:request_id]
 
   # Use a different cache store in production.
   config.cache_store = :mem_cache_store,
-                    (ENV["MEMCACHIER_SERVERS"] || "").split(","),
-                    {:username => ENV["MEMCACHIER_USERNAME"],
-                     :password => ENV["MEMCACHIER_PASSWORD"],
-                     :failover => true,
-                     :socket_timeout => 1.5,
-                     :socket_failure_delay => 0.2,
-                     :down_retry_delay => 60
-                    }
-  
+                       (ENV['MEMCACHIER_SERVERS'] || '').split(','),
+                       { username: ENV['MEMCACHIER_USERNAME'],
+                         password: ENV['MEMCACHIER_PASSWORD'],
+                         failover: true,
+                         socket_timeout: 1.5,
+                         socket_failure_delay: 0.2,
+                         down_retry_delay: 60 }
+
   # Use a real queuing backend for Active Job (and separate queues per environment)
   config.active_job.queue_adapter = :sidekiq
   # config.active_job.queue_name_prefix = "myapp_#{Rails.env}"
@@ -95,11 +96,11 @@ Rails.application.configure do
   # require 'syslog/logger'
   # config.logger = ActiveSupport::TaggedLogging.new(Syslog::Logger.new 'app-name')
 
-  config.action_mailer.default_url_options = { :host => ENV['APP_URL'] }
+  config.action_mailer.default_url_options = { host: ENV['APP_URL'] }
   config.action_mailer.delivery_method = :sparkpost
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = true
-  config.action_mailer.default :charset => "utf-8"
+  config.action_mailer.default charset: 'utf-8'
 
   # Don't need to use this because we send emails through Sparkpost APIs
   # config.action_mailer.smtp_settings = {
@@ -111,7 +112,7 @@ Rails.application.configure do
   #   enable_starttls_auto: true
   # }
 
-  if ENV["RAILS_LOG_TO_STDOUT"].present?
+  if ENV['RAILS_LOG_TO_STDOUT'].present?
     logger           = ActiveSupport::Logger.new(STDOUT)
     logger.formatter = config.log_formatter
     config.logger    = ActiveSupport::TaggedLogging.new(logger)

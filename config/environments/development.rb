@@ -1,4 +1,6 @@
-Rails.application.configure do
+# frozen_string_literal: true
+
+Rails.application.configure do # rubocop:disable Metrics/BlockLength
   # Verifies that versions and hashed value of the package contents in the project's package.json
   # config.webpacker.check_yarn_integrity = true
   # Settings specified here will take precedence over those in config/application.rb.
@@ -54,14 +56,14 @@ Rails.application.configure do
   # Suppress logger output for asset requests.
   config.assets.quiet = true
 
-  config.action_controller.asset_host = "http://localhost:3000"
+  config.action_controller.asset_host = 'http://localhost:3000'
 
-  config.action_mailer.default_url_options = { :host => "localhost:3000" }
+  config.action_mailer.default_url_options = { host: 'localhost:3000' }
   config.action_mailer.delivery_method = :letter_opener
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = true
-  config.action_mailer.default :charset => "utf-8"
-  config.action_mailer.smtp_settings = { :address => "localhost", :port => 1025 }
+  config.action_mailer.default charset: 'utf-8'
+  config.action_mailer.smtp_settings = { address: 'localhost', port: 1025 }
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true

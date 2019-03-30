@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 opts = { url: ENV['REDISCLOUD_URL'], namespace: 'myapp-sidekiq' }
 
 Sidekiq.configure_client do |config|

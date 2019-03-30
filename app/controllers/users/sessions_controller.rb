@@ -1,5 +1,9 @@
-class Users::SessionsController < Devise::SessionsController
+# frozen_string_literal: true
 
+# This is a Devise inherited class
+#
+# Class responsible for handling the User model Sessions
+class Users::SessionsController < Devise::SessionsController
   def new
     super
   end
@@ -10,5 +14,4 @@ class Users::SessionsController < Devise::SessionsController
     flash[:success] = "Welcome back #{resource.first_name}!"
     root_path
   end
-
 end

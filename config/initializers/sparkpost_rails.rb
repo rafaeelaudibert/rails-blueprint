@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 SparkPostRails.configure do |c|
   c.api_key = ENV['SPARKPOST_API_KEY']
   c.sandbox = false                               # default: false

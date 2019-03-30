@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative 'boot'
 
 require 'rails/all'
@@ -8,7 +10,8 @@ Bundler.require(*Rails.groups)
 
 Dotenv::Railtie.load
 
-module Referralhero
+module TestingRailsBlueprint
+  # Default Rails Class which makes some basic configurations
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.2
@@ -19,7 +22,7 @@ module Referralhero
     config.middleware.insert_before 0, Rack::Cors do
       allow do
         origins '*'
-        resource '*', :headers => :any, :methods => [:get, :post, :patch, :put, :delete]
+        resource '*', headers: :any, methods: %i[get post patch put delete]
       end
     end
 
@@ -28,6 +31,5 @@ module Referralhero
       g.assets = false # remove auto stylesheets
       g.helper = true
     end
-
   end
 end
