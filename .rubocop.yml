@@ -6,20 +6,13 @@ AllCops:
     - 'node_modules/**/*'
     - 'vendor/**/*'
     - '.git/**/*'
+    - 'bin/**/*'
 
 #################### Layout ###########################
 
 Layout/ClassStructure:
   Description: 'Enforces a configured order of definitions within a class body.'
   Enabled: true
-
-Layout/EndOfLine:
-  Description: 'Use Unix-style line endings.'
-  Enabled: true
-  # The `native` style means that CR+LF (Carriage Return + Line Feed) is
-  # enforced on Windows, and LF is enforced on other platforms. The other styles
-  # mean LF and CR+LF, respectively.
-  EnforcedStyle: crlf
 
 #################### Metrics ###############################
 
@@ -29,7 +22,6 @@ Metrics/AbcSize:
                  branches, and conditions.
   Enabled: true
   Max: 16.5
-
 
 Metrics/LineLength:
   Description: 'Limit lines to 100 characters.'
@@ -102,11 +94,24 @@ Rails/SaveBang:
   Description: 'Identifies possible cases where Active Record save! or related should be used.'
   Enabled: true
 
+Rails/UnknownEnv:
+  Description: 'Use correct environment name.'
+  Enabled: true
+  Environments:
+    - development
+    - test
+    - staging
+    - production
+
 #################### Style ###############################
 
 Style/AutoResourceCleanup:
   Description: 'Suggests the usage of an auto resource cleanup version of a method (if available).'
   Enabled: true
+
+Style/ClassAndModuleChildren:
+  Description: 'Checks style of children classes and modules.'
+  Enabled: false
 
 Style/ImplicitRuntimeError:
   Description: >-
