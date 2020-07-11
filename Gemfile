@@ -15,7 +15,7 @@ gem 'rails', '~> 5.2.1'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'dalli'
 gem 'memcachier'
-gem 'puma', '~> 3.11'
+gem 'puma', '~> 3.12'
 gem 'redis-namespace'
 gem 'redis-objects'
 gem 'redis-rails', '~> 5'
